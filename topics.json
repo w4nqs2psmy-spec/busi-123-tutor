@@ -1,0 +1,537 @@
+{
+  "meta": {
+    "course_code": "BUSI1620",
+    "course_title": "Business Creation Project",
+    "level": 6,
+    "credits": 30,
+    "school": "Greenwich Business School",
+    "assessment_context": "15-minute recorded pitch + live Q&A (20%), and a 5000-word academically constructed business plan (80%). Topic mastery should scaffold learners toward producing a defensible new-venture feasibility study.",
+    "pedagogy": "Generative learning (Fiorella & Mayer). Each topic pairs retrieval-style diagnostic questions (self-testing) with a generative activity that forces the learner to apply the framework to their own venture idea (self-explanation / elaboration).",
+    "mastery_levels": ["novice", "developing", "proficient"],
+    "difficulty_scale": ["easy", "medium", "hard"],
+    "question_types": {
+      "mcq": "Single-correct multiple choice, auto-scored. Used for diagnostic placement and adaptive quizzing.",
+      "open": "Free-text generative task, AI-graded against a rubric. Not used for initial placement; used to deepen and evidence mastery."
+    },
+    "scoring_note": "Use mcq results for the baseline diagnostic and for computing normalized learning gain per topic. Use open/generative tasks to promote and evidence deeper mastery once a topic reaches 'developing'."
+  },
+  "topics": [
+    {
+      "id": "market-research",
+      "slug": "market-research",
+      "title": "Primary & Secondary Market Research",
+      "learning_outcome": "LO1",
+      "learning_outcome_text": "Identify, assess and develop informed understanding of target markets by engaging with secondary sources (market data, academic business literature) and creating primary research.",
+      "description": "Distinguish primary from secondary research, choose fit-for-purpose methods, and evaluate source credibility to size and shape a venture's target market.",
+      "key_concepts": [
+        "Secondary research (industry reports, databases, academic literature)",
+        "Primary research (surveys, interviews, focus groups, observation)",
+        "Sampling and sample bias",
+        "Qualitative vs quantitative data",
+        "Source credibility and triangulation",
+        "Total addressable / serviceable / obtainable market (TAM/SAM/SOM)"
+      ],
+      "generative_activity": {
+        "id": "market-research-gen",
+        "type": "open",
+        "difficulty": "medium",
+        "generative_strategy": "apply",
+        "prompt": "For your own venture idea, name one secondary source and one primary method you would use, and explain what specific question each would answer that the other could not.",
+        "scoring": "ai_graded",
+        "rubric": [
+          "Correctly classifies the source as secondary and the method as primary",
+          "Each choice is justified by the specific question it answers",
+          "Shows why the two are complementary rather than redundant"
+        ]
+      },
+      "diagnostic_questions": [
+        {
+          "id": "mr-q1",
+          "type": "mcq",
+          "difficulty": "easy",
+          "generative_strategy": "self_test",
+          "prompt": "Which of the following is an example of secondary research?",
+          "options": [
+            "Running a survey of potential customers you designed yourself",
+            "Reading an existing IBISWorld or Mintel industry report",
+            "Interviewing five target users about their needs",
+            "Observing shoppers in a store you are studying"
+          ],
+          "answer": 1,
+          "rationale": "Secondary research uses data that already exists and was collected by others. The other three options are all primary research you collect yourself."
+        },
+        {
+          "id": "mr-q2",
+          "type": "mcq",
+          "difficulty": "medium",
+          "generative_strategy": "self_test",
+          "prompt": "A founder interviews 8 friends who all love the idea and concludes there is strong demand. What is the main methodological weakness?",
+          "options": [
+            "Interviews cannot produce useful data about demand",
+            "The sample is small and biased, so it is not representative of the target market",
+            "Qualitative data can never support a business decision",
+            "Secondary research should always be used instead of interviews"
+          ],
+          "answer": 1,
+          "rationale": "The issue is sampling bias and size: friends are not a representative sample of real target customers, so the enthusiasm does not generalise."
+        },
+        {
+          "id": "mr-q3",
+          "type": "mcq",
+          "difficulty": "hard",
+          "generative_strategy": "self_test",
+          "prompt": "You need a credible estimate of the obtainable market (SOM) for a niche B2B tool in year one. Which approach is most defensible?",
+          "options": [
+            "Assume you can capture a fixed 1% of the total addressable market",
+            "Combine secondary market sizing with primary evidence of reachable segments and realistic conversion, triangulating the two",
+            "Use only interviews, since primary data is always more reliable",
+            "Use only the largest figure you can find in any report"
+          ],
+          "answer": 1,
+          "rationale": "A defensible SOM triangulates top-down secondary sizing with bottom-up primary evidence about who you can actually reach and convert. The '1% of the market' shortcut is a classic unjustified assumption."
+        }
+      ]
+    },
+    {
+      "id": "pestel",
+      "slug": "pestel",
+      "title": "PESTEL Macro-Environment Analysis",
+      "learning_outcome": "LO2",
+      "learning_outcome_text": "Assess industry attractiveness and the likelihood of sustainable competitive advantage using key analytical frameworks (e.g. PESTEL, Porter's Five Forces).",
+      "description": "Use PESTEL to identify macro-environmental forces that shape a venture's opportunity and risk, and connect those forces to concrete strategic implications.",
+      "key_concepts": [
+        "Political factors",
+        "Economic factors",
+        "Social / socio-cultural factors",
+        "Technological factors",
+        "Environmental (ecological) factors",
+        "Legal / regulatory factors",
+        "Turning factors into 'so what' strategic implications"
+      ],
+      "generative_activity": {
+        "id": "pestel-gen",
+        "type": "open",
+        "difficulty": "medium",
+        "generative_strategy": "elaborate",
+        "prompt": "Identify the single PESTEL factor that most threatens your venture and the single factor that most enables it. For each, state the specific implication for your strategy — not just the factor.",
+        "scoring": "ai_graded",
+        "rubric": [
+          "Correctly assigns each factor to the right PESTEL category",
+          "Moves beyond listing to a concrete strategic implication ('so what')",
+          "Distinguishes a genuine threat from a genuine enabler"
+        ]
+      },
+      "diagnostic_questions": [
+        {
+          "id": "pe-q1",
+          "type": "mcq",
+          "difficulty": "easy",
+          "generative_strategy": "self_test",
+          "prompt": "What does the 'L' in PESTEL stand for?",
+          "options": ["Logistical", "Legal", "Local", "Labour"],
+          "answer": 1,
+          "rationale": "PESTEL = Political, Economic, Social, Technological, Environmental, Legal."
+        },
+        {
+          "id": "pe-q2",
+          "type": "mcq",
+          "difficulty": "medium",
+          "generative_strategy": "self_test",
+          "prompt": "New GDPR-style data protection rules that a fintech start-up must comply with belong to which PESTEL category?",
+          "options": ["Technological", "Economic", "Legal", "Social"],
+          "answer": 2,
+          "rationale": "Compliance requirements from legislation are Legal factors. They may have technological consequences, but the driver itself is regulatory."
+        },
+        {
+          "id": "pe-q3",
+          "type": "mcq",
+          "difficulty": "hard",
+          "generative_strategy": "self_test",
+          "prompt": "Which statement best reflects a strong, Level-6 use of PESTEL in a feasibility study?",
+          "options": [
+            "Listing as many factors as possible under each heading",
+            "Prioritising the few factors with the highest impact and drawing out their strategic implications",
+            "Using PESTEL to replace market research entirely",
+            "Only analysing the factors that make the venture look attractive"
+          ],
+          "answer": 1,
+          "rationale": "A weak PESTEL is an exhaustive list; a strong one prioritises high-impact factors and explains their implications for the venture."
+        }
+      ]
+    },
+    {
+      "id": "five-forces",
+      "slug": "five-forces",
+      "title": "Porter's Five Forces & Industry Attractiveness",
+      "learning_outcome": "LO2",
+      "learning_outcome_text": "Assess industry attractiveness and the likelihood of sustainable competitive advantage using key analytical frameworks (e.g. PESTEL, Porter's Five Forces).",
+      "description": "Analyse the five competitive forces to judge how attractive (profitable) an industry is and where a new venture is most exposed.",
+      "key_concepts": [
+        "Threat of new entrants (barriers to entry)",
+        "Bargaining power of suppliers",
+        "Bargaining power of buyers",
+        "Threat of substitutes",
+        "Competitive rivalry",
+        "Linking force intensity to expected profitability"
+      ],
+      "generative_activity": {
+        "id": "five-forces-gen",
+        "type": "open",
+        "difficulty": "hard",
+        "generative_strategy": "self_explain",
+        "prompt": "For your venture's industry, which of the five forces is strongest, and how does that force specifically constrain your ability to earn sustainable profit? Explain the causal chain.",
+        "scoring": "ai_graded",
+        "rubric": [
+          "Correctly identifies and names the force",
+          "Explains the mechanism by which the force pressures profitability",
+          "Connects the analysis to the venture's own position, not the industry in general"
+        ]
+      },
+      "diagnostic_questions": [
+        {
+          "id": "ff-q1",
+          "type": "mcq",
+          "difficulty": "easy",
+          "generative_strategy": "self_test",
+          "prompt": "Which of these is NOT one of Porter's Five Forces?",
+          "options": [
+            "Bargaining power of buyers",
+            "Threat of substitutes",
+            "Government subsidies",
+            "Competitive rivalry"
+          ],
+          "answer": 2,
+          "rationale": "The five forces are new entrants, supplier power, buyer power, substitutes, and rivalry. Government policy sits in PESTEL, not Porter's model."
+        },
+        {
+          "id": "ff-q2",
+          "type": "mcq",
+          "difficulty": "medium",
+          "generative_strategy": "self_test",
+          "prompt": "An industry has low barriers to entry, many similar competitors, and easy substitutes. What does Porter's model predict?",
+          "options": [
+            "High industry attractiveness and high profits",
+            "Low industry attractiveness and pressure on profits",
+            "No effect on profitability",
+            "Guaranteed failure for any new entrant"
+          ],
+          "answer": 1,
+          "rationale": "Strong forces (easy entry, intense rivalry, available substitutes) erode profitability, making the industry structurally less attractive."
+        },
+        {
+          "id": "ff-q3",
+          "type": "mcq",
+          "difficulty": "hard",
+          "generative_strategy": "self_test",
+          "prompt": "A start-up depends on one dominant cloud provider that supplies a critical, hard-to-switch input. Which force is most acute, and why?",
+          "options": [
+            "Buyer power, because the start-up is buying the service",
+            "Supplier power, because a concentrated supplier of a critical input can dictate terms",
+            "Threat of substitutes, because cloud services are commoditised",
+            "Competitive rivalry, because there are many cloud providers"
+          ],
+          "answer": 1,
+          "rationale": "A concentrated supplier of a critical, high-switching-cost input holds strong bargaining power over the venture, squeezing its margins."
+        }
+      ]
+    },
+    {
+      "id": "competitive-advantage",
+      "slug": "competitive-advantage",
+      "title": "Sustainable Competitive Advantage",
+      "learning_outcome": "LO2/LO3",
+      "learning_outcome_text": "Achieve sustainable competitive advantage through a viable business model and sound strategic positioning.",
+      "description": "Explain how a venture can build an advantage that competitors cannot easily copy, using generic strategies and resource-based reasoning (VRIO).",
+      "key_concepts": [
+        "Porter's generic strategies (cost leadership, differentiation, focus)",
+        "Resource-based view",
+        "VRIO (Valuable, Rare, Inimitable, Organised)",
+        "Barriers to imitation",
+        "Being 'stuck in the middle'",
+        "Sustainability of advantage over time"
+      ],
+      "generative_activity": {
+        "id": "competitive-advantage-gen",
+        "type": "open",
+        "difficulty": "hard",
+        "generative_strategy": "self_explain",
+        "prompt": "Name the resource or capability you believe gives your venture an advantage, then stress-test it: is it valuable, rare, and genuinely hard for a competitor to imitate within 12 months? Where is it weakest?",
+        "scoring": "ai_graded",
+        "rubric": [
+          "Applies VRIO logic explicitly (not just 'we're better')",
+          "Honestly identifies the weakest VRIO criterion",
+          "Distinguishes a temporary advantage from a sustainable one"
+        ]
+      },
+      "diagnostic_questions": [
+        {
+          "id": "ca-q1",
+          "type": "mcq",
+          "difficulty": "easy",
+          "generative_strategy": "self_test",
+          "prompt": "Which of these are Porter's three generic strategies?",
+          "options": [
+            "Growth, stability, retrenchment",
+            "Cost leadership, differentiation, focus",
+            "Product, price, promotion",
+            "Strengths, weaknesses, opportunities"
+          ],
+          "answer": 1,
+          "rationale": "Porter's generic strategies are cost leadership, differentiation, and focus (a narrow-scope version of the first two)."
+        },
+        {
+          "id": "ca-q2",
+          "type": "mcq",
+          "difficulty": "medium",
+          "generative_strategy": "self_test",
+          "prompt": "In the VRIO framework, what makes a resource a source of SUSTAINABLE advantage rather than just a temporary one?",
+          "options": [
+            "It is expensive to buy",
+            "It is valuable and rare but easy to copy",
+            "It is valuable, rare, and costly for rivals to imitate",
+            "It is used by every firm in the industry"
+          ],
+          "answer": 2,
+          "rationale": "Value and rarity give a temporary advantage; sustainability requires that rivals also find it costly or hard to imitate (and that the firm is organised to exploit it)."
+        },
+        {
+          "id": "ca-q3",
+          "type": "mcq",
+          "difficulty": "hard",
+          "generative_strategy": "self_test",
+          "prompt": "A venture tries to be both the cheapest and the most premium option without a clear focus. Porter would most likely describe this as:",
+          "options": [
+            "A blue-ocean strategy",
+            "Being 'stuck in the middle', risking no clear advantage",
+            "Cost-focus differentiation",
+            "A guaranteed path to advantage"
+          ],
+          "answer": 1,
+          "rationale": "Pursuing cost leadership and differentiation at once, without a focused scope, typically leaves a firm 'stuck in the middle' with no distinct advantage."
+        }
+      ]
+    },
+    {
+      "id": "business-model-canvas",
+      "slug": "business-model-canvas",
+      "title": "Business Model Design (Business Model Canvas)",
+      "learning_outcome": "LO3",
+      "learning_outcome_text": "Craft a viable business model, using a modern accepted framework, that can achieve sustainable competitive advantage.",
+      "description": "Use the nine building blocks of the Business Model Canvas to design a coherent, viable model and test whether the blocks reinforce one another.",
+      "key_concepts": [
+        "Customer Segments",
+        "Value Propositions",
+        "Channels",
+        "Customer Relationships",
+        "Revenue Streams",
+        "Key Resources",
+        "Key Activities",
+        "Key Partnerships",
+        "Cost Structure",
+        "Internal coherence / fit between blocks"
+      ],
+      "generative_activity": {
+        "id": "bmc-gen",
+        "type": "open",
+        "difficulty": "medium",
+        "generative_strategy": "apply",
+        "prompt": "State your venture's Value Proposition in one sentence, then name the single Customer Segment it serves best and the Revenue Stream that captures value from them. Explain how these three blocks fit together.",
+        "scoring": "ai_graded",
+        "rubric": [
+          "Correctly uses the three named canvas blocks",
+          "Value proposition is specific to a defined segment, not generic",
+          "Explains the fit/coherence between value, segment, and revenue"
+        ]
+      },
+      "diagnostic_questions": [
+        {
+          "id": "bmc-q1",
+          "type": "mcq",
+          "difficulty": "easy",
+          "generative_strategy": "self_test",
+          "prompt": "How many building blocks does the Business Model Canvas have?",
+          "options": ["Four", "Seven", "Nine", "Twelve"],
+          "answer": 2,
+          "rationale": "The Business Model Canvas (Osterwalder & Pigneur) has nine building blocks."
+        },
+        {
+          "id": "bmc-q2",
+          "type": "mcq",
+          "difficulty": "medium",
+          "generative_strategy": "self_test",
+          "prompt": "'How the business makes money from each customer segment' is described by which canvas block?",
+          "options": ["Key Resources", "Revenue Streams", "Channels", "Cost Structure"],
+          "answer": 1,
+          "rationale": "Revenue Streams describe how the venture captures value (pricing, models) from each customer segment."
+        },
+        {
+          "id": "bmc-q3",
+          "type": "mcq",
+          "difficulty": "hard",
+          "generative_strategy": "self_test",
+          "prompt": "A student's canvas lists a premium, high-touch value proposition but a pure low-cost, self-service channel and cost structure. What is the core problem?",
+          "options": [
+            "The canvas is missing a block",
+            "The blocks lack internal coherence — the model contradicts itself",
+            "The venture has too many customer segments",
+            "Nothing; blocks are independent of each other"
+          ],
+          "answer": 1,
+          "rationale": "A strong canvas is internally coherent. A premium value proposition delivered through a low-cost, self-service model is a mismatch that undermines viability."
+        }
+      ]
+    },
+    {
+      "id": "entrepreneurial-csf",
+      "slug": "entrepreneurial-csf",
+      "title": "Critical Success Factors, Team & Networks",
+      "learning_outcome": "LO4",
+      "learning_outcome_text": "Identify, through self-evaluation and engagement with the literature, the critical success factors an entrepreneur and their team must possess, and value the importance of personal networks.",
+      "description": "Evaluate the founder's and team's critical success factors honestly, identify capability gaps, and recognise how personal networks provide access to resources and legitimacy.",
+      "key_concepts": [
+        "Critical success factors (CSFs)",
+        "Founder self-evaluation and reflexivity",
+        "Team capability gaps and complementary skills",
+        "Human, social and financial capital",
+        "Personal networks and social capital",
+        "Access to resources, legitimacy and opportunity through networks"
+      ],
+      "generative_activity": {
+        "id": "csf-gen",
+        "type": "open",
+        "difficulty": "medium",
+        "generative_strategy": "self_explain",
+        "prompt": "Identify one critical capability your venture needs that you or your team currently lack. How would you close that gap through hiring, partnering, or your personal network — and why is that route credible?",
+        "scoring": "ai_graded",
+        "rubric": [
+          "Honest, specific capability gap (not generic)",
+          "Realistic plan to close it via team or network",
+          "Explains why personal networks matter for this specific gap"
+        ]
+      },
+      "diagnostic_questions": [
+        {
+          "id": "csf-q1",
+          "type": "mcq",
+          "difficulty": "easy",
+          "generative_strategy": "self_test",
+          "prompt": "In an entrepreneurial context, a 'personal network' primarily provides access to:",
+          "options": [
+            "Only emotional support",
+            "Resources, information, legitimacy and opportunities",
+            "Guaranteed funding",
+            "Legal protection from competitors"
+          ],
+          "answer": 1,
+          "rationale": "Networks (social capital) give founders access to resources, information, referrals, legitimacy and opportunities that are otherwise hard to reach."
+        },
+        {
+          "id": "csf-q2",
+          "type": "mcq",
+          "difficulty": "medium",
+          "generative_strategy": "self_test",
+          "prompt": "A solo founder with strong technical skills but no sales experience is planning a B2B venture. What is the most credible response in a feasibility study?",
+          "options": [
+            "Ignore the gap, since technical quality sells itself",
+            "Acknowledge the capability gap and plan to fill it via a co-founder, hire or network",
+            "Abandon the venture immediately",
+            "Assume sales skills will appear once the product is built"
+          ],
+          "answer": 1,
+          "rationale": "Level-6 work requires honest self-evaluation: identify the CSF gap and plan a credible way to fill it, rather than ignoring or assuming it away."
+        },
+        {
+          "id": "csf-q3",
+          "type": "mcq",
+          "difficulty": "hard",
+          "generative_strategy": "self_test",
+          "prompt": "Why can a strong founder network sometimes matter more than the initial business idea?",
+          "options": [
+            "Because ideas are legally worthless",
+            "Because networks give access to resources, feedback and pivots that let a weak idea evolve into a viable one",
+            "Because investors never read business plans",
+            "Because a good network removes all execution risk"
+          ],
+          "answer": 1,
+          "rationale": "Ideas evolve; networks provide the resources, feedback loops and opportunities that let founders adapt and reach viability, which is why they are treated as a critical success factor."
+        }
+      ]
+    },
+    {
+      "id": "sustainability",
+      "slug": "sustainability",
+      "title": "Global Context & the Triple Bottom Line",
+      "learning_outcome": "LO5",
+      "learning_outcome_text": "Understand the broader global context in which business creation takes place, considering all three pillars of sustainability.",
+      "description": "Situate the venture in its global context and evaluate it against the three pillars of sustainability, integrating sustainability into the business model rather than treating it as an add-on.",
+      "key_concepts": [
+        "Triple bottom line (People, Planet, Profit)",
+        "Social, environmental and economic pillars",
+        "Global / macro context of a venture",
+        "Sustainability as strategy vs greenwashing",
+        "UN Sustainable Development Goals (as reference)",
+        "Trade-offs and synergies between the three pillars"
+      ],
+      "generative_activity": {
+        "id": "sustainability-gen",
+        "type": "open",
+        "difficulty": "hard",
+        "generative_strategy": "elaborate",
+        "prompt": "Explain one way your venture creates value on each pillar of the triple bottom line (people, planet, profit). Then name the sharpest trade-off between two pillars and how you would manage it.",
+        "scoring": "ai_graded",
+        "rubric": [
+          "Addresses all three pillars distinctly",
+          "Identifies a genuine trade-off rather than claiming everything aligns",
+          "Proposes a credible way to manage the tension (avoids greenwashing)"
+        ]
+      },
+      "diagnostic_questions": [
+        {
+          "id": "sus-q1",
+          "type": "mcq",
+          "difficulty": "easy",
+          "generative_strategy": "self_test",
+          "prompt": "The three pillars of the triple bottom line are usually summarised as:",
+          "options": [
+            "People, Planet, Profit",
+            "Price, Product, Place",
+            "Plan, Prepare, Perform",
+            "Politics, Process, Profit"
+          ],
+          "answer": 0,
+          "rationale": "The triple bottom line comprises the social (people), environmental (planet) and economic (profit) pillars."
+        },
+        {
+          "id": "sus-q2",
+          "type": "mcq",
+          "difficulty": "medium",
+          "generative_strategy": "self_test",
+          "prompt": "A venture claims to be 'fully sustainable' but this appears nowhere in its operations, model or costs. This is best described as:",
+          "options": [
+            "Strong sustainability strategy",
+            "Greenwashing",
+            "Cost leadership",
+            "Triple bottom line accounting"
+          ],
+          "answer": 1,
+          "rationale": "Sustainability claims that are not embedded in operations or the business model are greenwashing — presentation without substance."
+        },
+        {
+          "id": "sus-q3",
+          "type": "mcq",
+          "difficulty": "hard",
+          "generative_strategy": "self_test",
+          "prompt": "Which statement reflects the most sophisticated treatment of sustainability in a feasibility study?",
+          "options": [
+            "Sustainability and profit always align, so there are no trade-offs",
+            "Sustainability is only a marketing message",
+            "The three pillars can involve real trade-offs that the venture must consciously manage",
+            "Only the environmental pillar matters for a start-up"
+          ],
+          "answer": 2,
+          "rationale": "A mature analysis recognises genuine tensions between people, planet and profit and shows how the venture manages them, rather than assuming perfect alignment."
+        }
+      ]
+    }
+  ]
+}
