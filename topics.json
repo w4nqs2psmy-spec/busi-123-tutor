@@ -1,5 +1,6 @@
 {
   "meta": {
+    "spec_version": "1.0.0",
     "course_code": "BUSI1620",
     "course_title": "Business Creation Project",
     "level": 6,
@@ -331,7 +332,7 @@
         "Internal coherence / fit between blocks"
       ],
       "generative_activity": {
-        "id": "bmc-gen",
+        "id": "business-model-canvas-gen",
         "type": "open",
         "difficulty": "medium",
         "generative_strategy": "apply",
@@ -397,7 +398,7 @@
         "Access to resources, legitimacy and opportunity through networks"
       ],
       "generative_activity": {
-        "id": "csf-gen",
+        "id": "entrepreneurial-csf-gen",
         "type": "open",
         "difficulty": "medium",
         "generative_strategy": "self_explain",
