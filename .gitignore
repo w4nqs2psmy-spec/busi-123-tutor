@@ -8,3 +8,6 @@ dist/
 coverage/
 *.tsbuildinfo
 .DS_Store
+
+# Supabase CLI link state: project ref, org id, pooler host. Machine-local.
+supabase/.temp/
