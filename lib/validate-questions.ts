@@ -13,9 +13,9 @@
  * intended second line of defence on those; it is Phase 2.
  */
 
-import type { Difficulty } from './mastery.js';
-import { FORBIDDEN_OPTION_PATTERNS } from './quiz-generation-prompt.js';
-import type { GeneratedQuestion } from './generator-schema.js';
+import type { Difficulty } from './mastery';
+import { FORBIDDEN_OPTION_PATTERNS } from './quiz-generation-prompt';
+import type { GeneratedQuestion } from './generator-schema';
 
 /** Prompts already seen by this learner, capped at the most recent 30. */
 export const AVOID_LIMIT = 30;

@@ -54,9 +54,59 @@ export function anonClient(): SupabaseClient {
   );
 }
 
-/** True when Supabase is configured, so pages can degrade instead of throwing. */
-export function isSupabaseConfigured(): boolean {
-  return Boolean(
-    process.env['NEXT_PUBLIC_SUPABASE_URL'] && process.env['SUPABASE_SERVICE_ROLE_KEY'],
+export type SupabaseHealth =
+  | { ok: true; detail: string }
+  | { ok: false; detail: string };
+
+/**
+ * Actually reach the database, rather than checking that variables exist.
+ *
+ * The presence-only version of this check reported "configured" while the URL
+ * pointed at a hostname that did not resolve and the service-role key was
+ * rejected — it gave confidence it had not earned. A real query is the only
+ * answer worth showing.
+ */
+export const HEALTH_TIMEOUT_MS = 2500;
+
+export async function checkSupabaseHealth(): Promise<SupabaseHealth> {
+  if (!process.env['NEXT_PUBLIC_SUPABASE_URL']) {
+    return { ok: false, detail: 'NEXT_PUBLIC_SUPABASE_URL is not set' };
+  }
+  if (!process.env['SUPABASE_SERVICE_ROLE_KEY']) {
+    return { ok: false, detail: 'SUPABASE_SERVICE_ROLE_KEY is not set' };
+  }
+
+  // Hard deadline. This runs in a page render, so an unreachable backend must
+  // degrade to a message rather than block the response indefinitely.
+  const timeout = new Promise<SupabaseHealth>((resolve) =>
+    setTimeout(
+      () => resolve({ ok: false, detail: `no response in ${HEALTH_TIMEOUT_MS}ms` }),
+      HEALTH_TIMEOUT_MS,
+    ).unref?.(),
   );
+
+  const probe = (async (): Promise<SupabaseHealth> => {
+    try {
+      // A real GET, not `head: true`. A HEAD response carries no body, so
+      // PostgREST errors arrive with an empty `message` and the page ends up
+      // reporting "unreachable —" with no reason. `count: 'exact'` still gives
+      // the row count via the Content-Range header.
+      const { count, error } = await serviceRoleClient()
+        .from('topics')
+        .select('id', { count: 'exact' })
+        .limit(1);
+
+      if (error) {
+        const detail = [error.message, error.code, error.hint]
+          .filter((part) => typeof part === 'string' && part.length > 0)
+          .join(' · ');
+        return { ok: false, detail: detail || 'request rejected, no detail returned' };
+      }
+      return { ok: true, detail: `${count ?? 0} topics seeded` };
+    } catch (error) {
+      return { ok: false, detail: error instanceof Error ? error.message : 'unreachable' };
+    }
+  })();
+
+  return Promise.race([probe, timeout]);
 }

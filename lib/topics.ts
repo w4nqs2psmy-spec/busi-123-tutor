@@ -13,7 +13,8 @@ import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 
-import type { Difficulty } from './mastery.js';
+import type { Difficulty } from './mastery';
+import { splitLearningOutcomes } from './learning-outcome';
 
 export type QuestionType = 'mcq' | 'open';
 export type GenerativeStrategy = 'self_test' | 'self_explain' | 'elaborate' | 'apply';
@@ -95,7 +96,7 @@ export function getTopic(topicId: string): Topic {
 
 /** Split the compound `learning_outcome` string ("LO2/LO3") into its parts. */
 export function learningOutcomes(topic: Topic): string[] {
-  return topic.learning_outcome.split('/').map((lo) => lo.trim()).filter(Boolean);
+  return splitLearningOutcomes(topic.learning_outcome);
 }
 
 /**

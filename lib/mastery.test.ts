@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 
 import {
   BAND_MIN_ATTEMPTS,
+  K,
   INITIAL_RATING,
   ITEM_RATING,
   TARGET_SUCCESS,
@@ -19,7 +20,7 @@ import {
   proportionCorrect,
   seedFromBaseline,
   updateMastery,
-} from './mastery.js';
+} from './mastery';
 
 // ---------------------------------------------------------------------------
 // The pinned worked example — mastery-model.md §3
@@ -267,10 +268,10 @@ describe('seedFromBaseline', () => {
     expect(perfect.rating).toBeGreaterThan(zero.rating);
   });
 
-  // Documents a real calibration consequence of K=40 over only three items:
-  // the full 0/3..3/3 range compresses into a single band. See the note in the
-  // Phase-1 write-up — kept as a test so the behaviour cannot change silently.
-  it('lands every baseline score in "developing" at the default K', () => {
+  // The adaptive K collapses the whole 0/3..3/3 range into one band over only
+  // three items. That is why baseline seeding uses its own rate; kept pinned
+  // so the reason for K_BASELINE stays legible.
+  it('would land every baseline score in "developing" at the adaptive K=40', () => {
     const scores: [boolean, boolean, boolean][] = [
       [false, false, false],
       [true, false, false],
@@ -278,16 +279,18 @@ describe('seedFromBaseline', () => {
       [true, true, true],
     ];
     for (const outcome of scores) {
-      expect(seedFromBaseline(anchors(outcome)).state.band).toBe('developing');
+      expect(seedFromBaseline(anchors(outcome), K).state.band).toBe('developing');
     }
 
-    expect(seedFromBaseline(anchors([false, false, false])).state.masteryProb).toBeCloseTo(0.419, 3);
-    expect(seedFromBaseline(anchors([true, true, true])).state.masteryProb).toBeCloseTo(0.584, 3);
+    expect(seedFromBaseline(anchors([false, false, false]), K).state.masteryProb)
+      .toBeCloseTo(0.419, 3);
+    expect(seedFromBaseline(anchors([true, true, true]), K).state.masteryProb)
+      .toBeCloseTo(0.584, 3);
   });
 
-  it('separates the extremes into distinct bands at K=96', () => {
-    expect(seedFromBaseline(anchors([false, false, false]), 96).state.band).toBe('novice');
-    expect(seedFromBaseline(anchors([true, true, true]), 96).state.band).toBe('developing');
+  it('separates the extremes at the K_BASELINE default', () => {
+    expect(seedFromBaseline(anchors([false, false, false])).state.band).toBe('novice');
+    expect(seedFromBaseline(anchors([true, true, true])).state.band).toBe('developing');
   });
 });
 

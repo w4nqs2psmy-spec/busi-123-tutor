@@ -22,8 +22,25 @@ export const ITEM_RATING = { easy: 1200, medium: 1500, hard: 1800 } as const;
 /** Standard Elo logistic scale. */
 export const SCALE = 400;
 
-/** Learning rate. Spec: 32–48 is sensible for short sequences. */
+/** Learning rate for the adaptive loop. Spec: 32–48 for short sequences. */
 export const K = 40;
+
+/**
+ * Learning rate for baseline seeding only.
+ *
+ * At K = 40 the three-item anchor baseline cannot separate outcomes: every
+ * score from 0/3 to 3/3 lands in "developing" (p 0.419 – 0.584), so a learner
+ * who got nothing right reads the same as one who got everything right.
+ *
+ * 96 restores the signal — 0/3 reads novice (p 0.326) while 3/3 stays
+ * developing (p 0.688). It deliberately stops short of the 120 that would push
+ * 3/3 to proficient: three correct answers on four-option items is not enough
+ * evidence for the top band, which should be earned in the adaptive loop.
+ *
+ * A higher K while evidence is thin is the standard provisional-rating pattern
+ * from Elo, not a workaround. The adaptive loop is unaffected.
+ */
+export const K_BASELINE = 96;
 
 /** Reference item for expressing mastery as a probability. */
 export const MEDIUM = 1500;
@@ -222,7 +239,7 @@ export function applyAttempt(
  */
 export function seedFromBaseline(
   results: readonly AttemptOutcome[],
-  k: number = K,
+  k: number = K_BASELINE,
 ): { state: MasteryState; applied: AppliedAttempt[] } {
   let state = initialMastery();
   const applied: AppliedAttempt[] = [];

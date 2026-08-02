@@ -12,11 +12,11 @@
 import Anthropic from '@anthropic-ai/sdk';
 import { zodOutputFormat } from '@anthropic-ai/sdk/helpers/zod';
 
-import type { Difficulty, Band } from './mastery.js';
-import { GenerationResponseSchema, type GeneratedQuestion } from './generator-schema.js';
-import { SYSTEM_PROMPT } from './quiz-generation-prompt.js';
-import { anchorQuestions, topicForPrompt } from './topics.js';
-import { buildAvoidList, validateQuestions, type RejectedQuestion } from './validate-questions.js';
+import type { Difficulty, Band } from './mastery';
+import { GenerationResponseSchema, type GeneratedQuestion } from './generator-schema';
+import { SYSTEM_PROMPT } from './quiz-generation-prompt';
+import { anchorQuestions, topicForPrompt } from './topics';
+import { buildAvoidList, validateQuestions, type RejectedQuestion } from './validate-questions';
 
 /**
  * `README.md` and `quiz-generation-prompt.md` both name "claude-sonnet", which

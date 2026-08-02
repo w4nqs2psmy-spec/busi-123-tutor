@@ -1,10 +1,10 @@
 import { describe, expect, it } from 'vitest';
 
-import { buildUserMessage, forBrowser, generateQuestions } from './generator.js';
-import type { GeneratedQuestion } from './generator-schema.js';
-import { GenerationResponseSchema } from './generator-schema.js';
-import { SYSTEM_PROMPT } from './quiz-generation-prompt.js';
-import { anchorQuestions, allTopics, getTopic, learningOutcomes, specVersion } from './topics.js';
+import { buildUserMessage, forBrowser, generateQuestions } from './generator';
+import type { GeneratedQuestion } from './generator-schema';
+import { GenerationResponseSchema } from './generator-schema';
+import { SYSTEM_PROMPT } from './quiz-generation-prompt';
+import { anchorQuestions, allTopics, getTopic, learningOutcomes, specVersion } from './topics';
 import {
   AVOID_LIMIT,
   buildAvoidList,
@@ -13,7 +13,7 @@ import {
   promptSimilarity,
   validateQuestion,
   validateQuestions,
-} from './validate-questions.js';
+} from './validate-questions';
 
 const validQuestion = (over: Partial<GeneratedQuestion> = {}): GeneratedQuestion => ({
   id: 'market-research-gen-1',
